@@ -30,4 +30,63 @@ roll2 = function(bones) {
 > rolls = replicate(10000, roll())
 > qplot(rolls, binwidth = 1)
 
-# 
+
+### attribute of object ###
+
+# name the dice
+> names(die)
+NULL
+> names(die) = c("one", "two", "three", "four", "five", "six")
+> attributes(die)
+$names
+[1] "one"   "two"   "three" "four"  "five"  "six"
+
+> die
+one   two three  four  five   six 
+1     2     3     4     5     6 
+
+> die + 1
+one   two three  four  five   six 
+2     3     4     5     6     7 
+  # name is not affected
+
+# dice dimension
+> dim(die)
+NULL
+> dim(die) = c(2,3)
+> die
+[,1] [,2] [,3]
+[1,]    1    3    5
+[2,]    2    4    6
+
+  ## dice hypercube
+  > dim(die) = c(1,2,3)
+  > die
+  , , 1
+  
+  [,1] [,2]
+  [1,]    1    2
+  
+  , , 2
+  
+  [,1] [,2]
+  [1,]    3    4
+  
+  , , 3
+  
+  [,1] [,2]
+  [1,]    5    6
+
+
+# die matrix
+> m = matrix(die, nrow = 2)
+> m
+[,1] [,2] [,3]
+[1,]    1    3    5
+[2,]    2    4    6
+  # die again matrix
+  > m = matrix(die, nrow = 2, byrow=TRUE)
+  > m
+  [,1] [,2] [,3]
+  [1,]    1    2    3
+  [2,]    4    5    6
